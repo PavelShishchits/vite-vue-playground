@@ -1,10 +1,16 @@
-import { createApp } from "vue";
+import { createApp as createVueApp, createSSRApp } from "vue";
 import "./css/global.scss";
-import router from "./router";
+import { createRouter } from "./router";
 import App from "./App.vue";
 
-const app = createApp(App);
+export function createApp() {
+  const app = createSSRApp(App);
 
-app.use(router);
+  const router = createRouter();
+  app.use(router);
 
-app.mount("#app");
+  return {
+    app,
+    router,
+  };
+}
