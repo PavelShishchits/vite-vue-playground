@@ -4,8 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "dev": "node server.js",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vue-tsc && vite build --outDir dist/client --ssrManifest",
+    "build:server": "vue-tsc && vite build --outDir dist/server --ssr src/entry-server.js",
+    "serve": "NODE_ENV=production node server",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -16,9 +19,11 @@
   "devDependencies": {
     "@types/node": "^20.2.3",
     "@vitejs/plugin-vue": "^4.1.0",
+    "express": "^4.18.2",
+    "compression": "^1.7.4",
+    "serve-static": "^1.15.0",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
-    "vue-tsc": "^1.4.2",
-    "express": "^4.18.2"
+    "vue-tsc": "^1.4.2"
   }
 }

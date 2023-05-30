@@ -1,4 +1,4 @@
-import { createApp as createVueApp, createSSRApp } from "vue";
+import { createSSRApp } from "vue";
 import "./css/global.scss";
 import { createRouter } from "./router";
 import App from "./App.vue";
